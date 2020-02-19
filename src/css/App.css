@@ -1,0 +1,15 @@
+.App {
+  max-width: 1600px;
+  margin:auto;
+}
+
+.flex-container {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.movie-card {
+  margin: 10px;
+  background-color: grey;
+  text-align: left;
+}
