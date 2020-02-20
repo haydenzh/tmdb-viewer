@@ -2,12 +2,12 @@ import React from 'react';
 import Header from './Header';
 import MovieList from './MovieList';
 
-const Home = (prop) => {
+const Home = () => {
   return (
-    <div>
+    <>
       <Header />
       <MovieList />
-    </div>
+    </>
   );
 };
 

@@ -4,9 +4,10 @@ import '../css/header.css';
 
 import SearchBar from './SearchBar';
 
-const Header = (prop) => {
+const Header = () => {
   return (
     <div className="header">
+      <div className="logo"><img src="/logo.svg" alt=""/></div>
       <div className="search-bar">
         <SearchBar />
       </div>

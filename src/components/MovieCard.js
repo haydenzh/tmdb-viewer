@@ -1,14 +1,49 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Card from './Card';
+import '../css/movieCard.css';
 
+import Card from './Card';
+import Badge from './Badge';
+import {IMAGE_BASE_URL} from '../apis/imdb';
+
+const getBadgeBackGroundColor = (popularity) =>{
+  let bgColor = '#000';
+  let rounded = 0;
+  if(popularity){
+    rounded = Math.round(popularity);
+  }
+
+  if(rounded >= 80){
+    bgColor = '#01d277';
+  } else if(rounded < 80 && rounded >= 50) {
+    bgColor ='#4902a3';
+  } else {
+    bgColor = '#d1225b';
+  }
+
+  return bgColor;
+};
+
+const releaseDateFormat = (date) => {
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  if(date){
+    let d = new Date(date);
+    const month = months[Number(d.getMonth())];
+    const year = d.getFullYear();
+
+    return `${month} ${year}`;
+  }
+
+  return 'Unknown';
+};
 
 const MovieCard = ({movie,className}) => {
   return (
     <Link to={`/movie/${movie.id}`}>
-      <Card className={className} title={movie.title}>
-        <div>{movie.release_date}</div> 
+      <Card className={className} title={movie.title} img={`${IMAGE_BASE_URL}original${movie.poster_path}`}>
+        <div className="movie-card-child">{releaseDateFormat(movie.release_date)}</div>
+        <Badge content={`${Math.round(movie.popularity)}%`} backGroundColor={getBadgeBackGroundColor(movie.popularity)} top={'6px'} left={'10px'}/>
       </Card>
     </Link>
   );
