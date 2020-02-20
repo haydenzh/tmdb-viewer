@@ -7,21 +7,17 @@ import Card from './Card';
 import Badge from './Badge';
 import {IMAGE_BASE_URL} from '../apis/imdb';
 
-const getBadgeBackGroundColor = (popularity) =>{
+const getBadgeBackGroundColor = (vote) =>{
   let bgColor = '#000';
-  let rounded = 0;
-  if(popularity){
-    rounded = Math.round(popularity);
+  if(vote){
+    if(vote >= 8){
+      bgColor = '#01d277';
+    } else if(vote < 8 && vote >= 6) {
+      bgColor ='#4902a3';
+    } else {
+      bgColor = '#d1225b';
+    }
   }
-
-  if(rounded >= 80){
-    bgColor = '#01d277';
-  } else if(rounded < 80 && rounded >= 50) {
-    bgColor ='#4902a3';
-  } else {
-    bgColor = '#d1225b';
-  }
-
   return bgColor;
 };
 
@@ -43,7 +39,7 @@ const MovieCard = ({movie,className}) => {
     <Link to={`/movie/${movie.id}`}>
       <Card className={className} title={movie.title} img={`${IMAGE_BASE_URL}original${movie.poster_path}`}>
         <div className="movie-card-child">{releaseDateFormat(movie.release_date)}</div>
-        <Badge content={`${Math.round(movie.popularity)}%`} backGroundColor={getBadgeBackGroundColor(movie.popularity)} top={'6px'} left={'10px'}/>
+        <Badge content={`${movie.vote_average * 10}%`} backGroundColor={getBadgeBackGroundColor(movie.vote_average)} top={'6px'} left={'10px'}/>
       </Card>
     </Link>
   );
