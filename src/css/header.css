@@ -7,59 +7,6 @@
   position: relative;
 }
 
-.header .line {
-  height: 3px;
-  position: absolute;
-  background: #01d277;
-  border-radius: 5px;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  z-index: 100;
-}
-
-
-.header .line-1 {
-  left: 4%;
-  right: 60%;
-  top: -8%;
-  bottom: 102%;
-}
-
-.header .line-2 {
-  left: 3%;
-  right: 60%;
-  top: 2%;
-  bottom: -5%;
-}
-
-.header .line-3 {
-  left: -12%;
-  right: 60%;
-  top: 56%;
-  bottom: 93%;
-}
-
-.header .line-4 {
-  left: 68%;
-  right: -3%;
-  top: -6%;
-  bottom: 28%;
-}
-
-.header .line-5 {
-  left: 58%;
-  right: 2%;
-  top: 56%;
-  bottom: 75%;
-}
-
-.header .line-6 {
-  left: 70%;
-  right: 8%;
-  top: 10%;
-  bottom: 5%;
-}
-
 .header .logo {
  height: 80%;
  display: flex;
