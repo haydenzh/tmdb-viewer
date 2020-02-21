@@ -7,15 +7,24 @@ import Spinner from './Spinner';
 import ErrorPage from './ErrorPage';
 
 import context from '../contexts/tmdbContext';
+import useFetch from '../hooks/useFetch';
 
-const MovieList = (prop) => {
-  const {movies,term,error} = useContext(context);
+const MovieList = (props) => {
+  const {state} = useContext(context);
+  const { movies,isLoading,term,error } = state;
+
+  useFetch(term);
+
   if(error){
     return <ErrorPage error={error}/>
   }
 
-  if(!movies.length){
+  if(isLoading){
     return <Spinner />
+  }
+
+  if(!movies.length && !isLoading){
+    return <ErrorPage error={'No matched movies found.'}/>
   }
 
   return (
@@ -30,4 +39,4 @@ const MovieList = (prop) => {
   );
 };
 
-export default MovieList;
+export default React.memo(MovieList);

@@ -8,17 +8,17 @@ import Home from './components/Home';
 import MovieDetail from './components/MovieDetail';
 
 function App() {
-  let [movies,setMovies] = useState([]);
-  let [term,setTerm] = useState('');
-  let [error,setError] = useState('');
+  let initState = {
+    term:'',
+    isLoading:true,
+    movies:[],
+    error:null
+  };
 
-  let store = {
-    movies:movies,
-    setMovies:setMovies,
-    term:term,
-    setTerm:setTerm,
-    error:error,
-    setError:setError
+  let [state,setState] = useState(initState);
+  let store ={
+    state:state,
+    setState:setState
   };
 
   return (

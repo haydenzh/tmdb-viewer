@@ -1,18 +1,14 @@
 import React,{ useContext,useRef } from 'react';
 
 import context from '../contexts/tmdbContext';
-import useFetch from '../hooks/useFetch';
 
 const SearchBar = () => {
-  let {term,setTerm} = useContext(context);
-
+  let {setState} = useContext(context);
   const inputEl = useRef(null);
-
-  useFetch(term);
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    setTerm(inputEl.current.value);
+    setState(preState => ({...preState,term:inputEl.current.value }));
   };
 
   return (

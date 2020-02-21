@@ -1,10 +1,6 @@
 import React from 'react';
 
-const ctx = React.createContext({
-  term:'',
-  movies:[],
-  error:''
-});
+const ctx = React.createContext({});
 
 export const Provider = (props) => {
   return (

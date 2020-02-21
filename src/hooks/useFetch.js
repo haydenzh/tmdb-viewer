@@ -4,17 +4,16 @@ import tmdb from '../apis/imdb';
 import TMDBContext from '../contexts/tmdbContext';
  
 export default (term) => {
-  let context = useContext(TMDBContext);
+  let { setState } = useContext(TMDBContext);
     useEffect(() => {
       if(!term){
           tmdb.get('/movie/popular')
           .then(response => {
-            context.setMovies(response.data.results);
-            context.setError(null);
+            setState(preState => ({ ...preState,isLoading:false,movies:response.data.results }));
           })
         .catch(error => { 
             const errorMsg = error.response ? error.response.data.status_message : error.message;
-            context.setError(errorMsg)
+            setState(preState => ({ ...preState,isLoading:false,error:errorMsg }));
           }); 
       } else {
         tmdb.get('/search/movie',{
@@ -23,12 +22,11 @@ export default (term) => {
            }
         })
         .then(response => {
-          context.setMovies(response.data.results);
-          context.setError(null);
+          setState(preState => ({ ...preState,isLoading:false,movies:response.data.results }));
         })
         .catch(error => { 
           const errorMsg = error.response ? error.response.data.status_message : error.message;
-          context.setError(errorMsg);
+          setState(preState => ({ ...preState,isLoading:false,error:errorMsg }));
         });
       }
     },[term]);

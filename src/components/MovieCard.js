@@ -5,7 +5,9 @@ import '../css/movieCard.css';
 
 import Card from './Card';
 import Badge from './Badge';
-import {IMAGE_BASE_URL} from '../apis/imdb';
+import config from '../config/config';
+import defaultImg from '../images/imdb-logo.png';
+
 
 const getBadgeBackGroundColor = (vote) =>{
   let bgColor = '#000';
@@ -35,9 +37,10 @@ const releaseDateFormat = (date) => {
 };
 
 const MovieCard = ({movie,className}) => {
+  const img = movie.poster_path ? `${config.IMAGE_BASE_URL}original${movie.poster_path}` : defaultImg;
   return (
     <Link to={`/movie/${movie.id}`}>
-      <Card className={className} title={movie.title} img={`${IMAGE_BASE_URL}original${movie.poster_path}`}>
+      <Card className={className} title={movie.title} img={img}>
         <div className="movie-card-child">{releaseDateFormat(movie.release_date)}</div>
         <Badge content={`${movie.vote_average * 10}%`} backGroundColor={getBadgeBackGroundColor(movie.vote_average)} top={'6px'} left={'10px'}/>
       </Card>

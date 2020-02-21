@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Card from './Card';
-import { IMAGE_BASE_URL } from '../apis/imdb';
+import config from '../config/config';
 
 import { getPercentagePopularity,getFullYearFromDateString, getHourStringFromMinute} from '../util/helpers';
 
 const MovieDetailHeader = ({movie}) => {
   const {title,release_date,backdrop_path,poster_path,runtime,popularity} = movie;
-  const bkgImg = `${IMAGE_BASE_URL}original${backdrop_path}`;
-  const posterImg = `${IMAGE_BASE_URL}original${poster_path}`;
+  const bkgImg = `${config.IMAGE_BASE_URL}original${backdrop_path}`;
+  const posterImg = `${config.IMAGE_BASE_URL}original${poster_path}`;
   const briefInfo = `${getFullYearFromDateString(release_date)} . ${getPercentagePopularity(popularity)} User Score`
   return (
     <>
