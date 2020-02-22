@@ -1,12 +1,12 @@
 .movie-detail {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  display: grid;
+  grid-template-rows:300px auto;
+  grid-template-columns: 1fr;
+  height: 100%;
 }
 
 .movie-detail .movie-detail-header {
   position: relative;
-  height: 50%;
 }
 
 .movie-detail .movie-detail-header a {
@@ -30,7 +30,7 @@
 
 .movie-detail .movie-detail-header .movie-detail-info {
   display: flex;
-  width: 80%;
+  width: 260px;
   position: absolute;
   top:45%;
   left: 10%;
@@ -60,7 +60,6 @@
   letter-spacing: 2px;
 }
 
-
 .movie-detail .movie-detail-header .movie-brief-info .movie-brief-info-child {
   margin: 10px 0;
   font-size: 0.7rem;
@@ -69,7 +68,6 @@
 
 .movie-detail .movie-detail-overview {
   padding: 15px;
-  height:50%;
 }
 
 .movie-detail .movie-detail-overview .movie-overview-card {
@@ -88,40 +86,40 @@
   font-size: 1.4rem;
 }
 
-@media screen and (min-width:768px) {
-  .movie-detail .movie-detail-header .movie-detail-info .movie-detail-poster {
-    width: 30%;
+@media only screen and (min-width:768px) {
+  .movie-detail {
+    grid-template-rows:450px auto;
   }
 
-  .movie-detail .movie-detail-header .movie-detail-info .movie-brief-info {
-    margin-top: 40px;
-    padding-left: 30px;
-  }
-
-  .movie-detail .movie-detail-header .movie-detail-info .movie-brief-info .card-title {
-      font-size: 2rem;
-  }
-
-  .movie-detail .movie-detail-header .movie-detail-info .movie-brief-info .movie-brief-info-child {
-    font-size: 0.8rem;
+  .movie-detail .movie-detail-header .movie-detail-info{
+    width: 350px;
   }
 }
 
-@media screen and (min-width:996px) {
-  .movie-detail .movie-detail-header .movie-detail-info .movie-detail-poster {
-    width: 25%;
+@media only screen and (min-width:992px) {
+  .movie-detail {
+    grid-template-rows:550px auto;
+  }
+
+  .movie-detail .movie-detail-header .movie-detail-info{
+    width: 450px;
   }
 }
 
-@media screen and (min-width:1200px) {
-  .movie-detail .movie-detail-header .movie-detail-info .movie-detail-poster {
-    width: 20%;
+@media only screen and (min-width:1200px) {
+  .movie-detail {
+    grid-template-rows:650px auto;
+  }
+
+  .movie-detail .movie-detail-header .movie-detail-info{
+    width: 550px;
   }
 }
 
-@media screen and (min-width:1500px){
+
+@media only screen and (min-width:1440px){
   .movie-detail .movie-detail-header .movie-background-image {
-    height: 80%;
+    height: 85%;
   }
 
   .movie-detail .movie-detail-header .movie-detail-info .movie-detail-poster {
@@ -130,8 +128,8 @@
 
   .movie-detail .movie-detail-header .movie-detail-info {
     width: 100%;
-    top:80%;
-    left: 10px;
+    top:90%;
+    left: 15px;
   }
   
   .movie-detail .movie-detail-overview {
